@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-long* newcoef(long* arr, int n, int i) {
+long* newcoef( long* arr, int n, int i ) 
+{
 
     arr[ n - i ] *= i;
 
@@ -9,7 +10,8 @@ long* newcoef(long* arr, int n, int i) {
     else        { return newcoef( arr, n, --i ); }
 }
 
-long polynom( long* arr, int n, int i, int value, long sum ) {
+long polynom( long* arr, int n, int i, int value, long sum ) 
+{
 
     if (n == 0) { return sum; }
     
@@ -20,16 +22,15 @@ long polynom( long* arr, int n, int i, int value, long sum ) {
     else        { return polynom( arr, n, ++i, value, sum ); }
 }
 
-int main(){
+int main()
+{
     int n, value, i;
     long *poly, p, dp;
 
     scanf( "%i%i", &n, &value );
     poly = malloc( ( n + 1) * sizeof(long) );
 
-    for (i = 0; i <= n; i++) {
-        scanf( "%li", &poly[i] );
-    }
+    for (i = 0; i <= n; i++) { scanf( "%li", &poly[i] ); }
 
     p    = polynom( poly, n, 1, value, poly[0] );
     poly = newcoef( poly, n, n );
